@@ -1,0 +1,22 @@
+<section id="product1" class="section-p1">
+  <div class="pro-container" id="products">
+    <div class="pro" *ngFor="let product of products">
+      <img src="{{ product.image }}" alt="pro-img" class="proImg" />
+      <div class="des">
+        <span>{{product.category}}</span>
+        <a class="cardLink" [routerLink]="['/singleProduct', product.id]">
+          <h5>{{ product.title.slice(0, 30) }}</h5>
+        </a>
+        <div class="star">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h4>{{ product.price }}</h4>
+      </div>
+      <a class="cartLink" (click)="addToCart(product)"><i class="bi bi-cart3 cart"></i></a>
+    </div>
+  </div>
+</section>

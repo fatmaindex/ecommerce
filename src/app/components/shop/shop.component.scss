@@ -1,0 +1,24 @@
+#shop-header {
+    background-image: url(../../../assets/img//blouse-2597205_1280\ \(1\).jpg);
+}
+  /* -------pagination---------------- */
+  #shop-pagination {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    gap: 3px;
+    list-style: none;
+  }
+  #shop-pagination li {
+    text-decoration: none;
+    background-color: #088178;
+    padding: 15px 20px;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: 600;
+  }
+  #shop-pagination li i {
+    font-size: 16px;
+    font-weight: 600;
+  }
