@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environment/environment';
-import { promoAd } from '../models/promoAd';
+import { promoAd } from '../models/promoAd'
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -37,11 +37,11 @@ export class PromoAdsService {
               counter++
             }
             else {
-              // counter=0
-              clearInterval(timer)
-              observer.complete()
+              counter=0
+              // clearInterval(timer)
+              // observer.complete()
             }
-          }, 3000);
+          }, 4000);
 
           return {
             unsubscribe() { clearInterval(timer) }

@@ -7,13 +7,13 @@ import { CartService } from '../../services/cart.service';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponet {
-  cartProductsNum:number|null=null ;
+  cartProductsNum:number|null=null;
   
   constructor(private cartService: CartService) {
-    this.cartService.NumEmitter.subscribe((ProductsNum) => {
-      this.cartProductsNum = ProductsNum;
-
-    })
+   this.cartService.cartProductsNumSubject.subscribe(num=>{
+    this.cartProductsNum=num
+   })
   }
 
 }
+

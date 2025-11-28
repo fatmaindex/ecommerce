@@ -1,0 +1,21 @@
+$breakpoints: (
+    mop: 320px,
+    xsm: 420px,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1024px,
+    laptop: 1280px,
+    xxl: 1800px,
+  );
+  
+  // Define the mixin
+  @mixin breakpoint($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+      @media (min-width: map-get($breakpoints, $breakpoint)) {
+        @content;
+      }
+    } @else {
+      @error "Invalid breakpoint: #{$breakpoint}.";
+    }
+  }

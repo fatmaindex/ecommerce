@@ -1,6 +1,7 @@
 export const environment = {
     production: false,
     apiUrl: 'http://localhost:3000/products',
-    promoAdsUrl: 'http://localhost:3000/promoAds'  
+    promoAdsUrl: 'http://localhost:3000/promoAds' ,
+    cartURL:"http://localhost:3000/cart"
   };
   

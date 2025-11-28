@@ -1,16 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+@import "../src/assets/scss/main.scss";
+
+/* Global Styles */
 @import url("https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Spartan", sans-serif;
+  font-family: "Spartan", sans-serif; 
 }
 
-html,body {
+html, body {
+  height: 100%;
+  margin: 0;
   scroll-behavior: smooth;
   overflow-x: hidden !important;
 }
+
+
+/* Typography */
 
 h1 {
   font-size: 50px;
@@ -31,7 +39,7 @@ h4 {
 
 h6 {
   font-weight: 700;
-  font-size: 12px;
+  font-size: 12px ;
 }
 
 p {
@@ -40,6 +48,7 @@ p {
   margin: 15px 0 20px 0;
 }
 
+/* Sections */
 .section-p1 {
   padding: 40px 80px;
 }
@@ -47,45 +56,42 @@ p {
 .section-m1 {
   margin: 40px 0;
 }
-button.normal {
+
+/* Buttons */
+button {
   font-size: 14px;
   font-weight: 600;
-  padding: 15px 30px;
-  color: #000;
-  background-color: #fff;
+  cursor: pointer;
   border-radius: 4px;
-  cursor: pointer;
-  border: none;
-  outline: none;
   transition: 0.2s;
-}
-button.white {
-  font-size: 13px;
-  font-weight: 600;
-  padding: 11px 18px;
-  color: #fff;
-  background-color: transparent;
-  cursor: pointer;
-  border: 1px solid #fff;
-  outline: none;
-  transition: 0.2s;
+
+  &.normal {
+    padding: 15px 30px;
+    color: #000;
+    background-color: #fff;
+    border: none;
+  }
+
+  &.white {
+    padding: 11px 18px;
+    color: #fff;
+    background-color: transparent;
+    border: 1px solid #fff;
+  }
 }
 
-body {
-  width: 100%;
-}
+/* Page Header */
 .page-header {
   height: 40vh;
   width: 100%;
-  background-size:cover;
-
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
   padding: 14px;
 }
-.page-header h2,
-.page-header p {
+
+.page-header h2, .page-header p {
   color: #fff;
 }
