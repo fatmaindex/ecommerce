@@ -1,0 +1,16 @@
+.filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.filter-controls {
+  display: flex;
+  gap: 12px;
+}
+
+.w-180 {
+  width: 180px;
+}

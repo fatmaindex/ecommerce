@@ -1,0 +1,33 @@
+
+#pagination {
+  display: flex;
+  justify-content: center; 
+  text-align: center;
+  display: flex;
+  gap: 3px;
+  list-style: none;
+}
+#pagination li {
+  text-decoration: none;
+  background-color: #088178;
+  padding: 15px 20px;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 600;
+}
+#pagination .active
+,#shop-pagination .active{
+  text-decoration: none;
+  background-color:transparent;
+  padding: 15px 20px;
+  border-radius: 4px;
+  color:  #088178;
+  font-weight: 600;
+  border: 2px solid  #088178;
+}
+
+
+#pagination li i {
+  font-size: 16px;
+  font-weight: 600;
+}

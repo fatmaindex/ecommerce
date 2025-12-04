@@ -1,41 +1,43 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer mode="over" class="sidenav" role="navigation" position="end">
-    <mat-nav-list class="nav-list">
-      <a mat-list-item routerLink="/home" (click)="drawer.toggle()">Home</a>
-      <a mat-list-item routerLink="/shop" (click)="drawer.toggle()">Shop</a>
-      <a mat-list-item routerLink="/blog" (click)="drawer.toggle()">Blog</a>
-      <a mat-list-item routerLink="/about" (click)="drawer.toggle()">About</a>
-      <a mat-list-item routerLink="/contact" (click)="drawer.toggle()">Contact</a>
-    </mat-nav-list>
-  </mat-sidenav>
 
-  <mat-sidenav-content>
-    <mat-toolbar  class="nav-toolbar">
-    
-      <a routerLink="/home" class="logo">
-        <img src="assets/img/logo.png" alt="Logo">
-      </a>
+  <nav class="navbar" >
+ <a routerLink="/home" class="logo">
+    <img src="assets/img/logo.png" alt="Logo" />
+  </a>
 
-      <div class="navbar" fxShow="false" fxShow.gt-sm>
-        <a mat-button routerLink="/home" routerLinkActive="active-link">Home</a>
-        <a mat-button routerLink="/shop" routerLinkActive="active-link">Shop</a>
-        <a mat-button routerLink="/blog" routerLinkActive="active-link">Blog</a>
-        <a mat-button routerLink="/about" routerLinkActive="active-link">About</a>
-        <a mat-button routerLink="/contact" routerLinkActive="active-link">Contact</a>
-      </div>
+  <!-- Desktop Links -->
+   <div class="right-nav">
+  <ul class="nav-links desktop" id="navbar">
+    <li><a routerLink="/home" routerLinkActive="active-link" (click)="closeMenu()">Home</a></li>
+    <li><a routerLink="/shop" routerLinkActive="active-link" (click)="closeMenu()">Shop</a></li>
+    <li><a routerLink="/blog" routerLinkActive="active-link" (click)="closeMenu()">Blog</a></li>
+    <li><a routerLink="/about" routerLinkActive="active-link" (click)="closeMenu()">About</a></li>
+    <li><a routerLink="/contact" routerLinkActive="active-link" (click)="closeMenu()">Contact</a></li>
 
-      <span class="spacer"></span>
-      <button mat-icon-button (click)="drawer.toggle()" class="menu-button">
-        <mat-icon>menu</mat-icon>
-      </button>
+  </ul>
 
-      <button mat-icon-button routerLink="/cart" id="cartLink">
-        <i class="bi bi-cart3 cart"></i>
-        <span id="cartNum" *ngIf="cartProductsNum">{{ cartProductsNum }}</span>
-      </button>
-    </mat-toolbar>
+  <!-- Icons -->
+  <div class="icons">
+    <a routerLink="/cart"  id="cartLink"> <i class="fa-solid fa-bag-shopping"></i></a>
+    <!-- Hamburger -->
+         <i id="bar" class="fas fa-outdent hamburger" (click)="toggleSidebar()"></i>
+  </div>
+  </div>
+</nav>
 
-   </mat-sidenav-content>
-</mat-sidenav-container>  
+<!-- Overlay -->
+<div class="overlay" *ngIf="isSidebarOpen" (click)="toggleSidebar()"></div>
 
-
+<!-- Sidebar -->
+<div class="sidebar"  id="sidebar" [class.open]="isSidebarOpen">
+  <div class="close-btn">
+         <i  class="fa-solid fa-xmark" (click)="toggleSidebar()"></i>
+  </div>
+  <ul class="nav-links"  [class.active]="isActive">
+    <li><a routerLink="/home" routerLinkActive="active-link" (click)="toggleSidebar()">Home</a></li>
+    <li><a routerLink="/shop" routerLinkActive="active-link" (click)="toggleSidebar()">Shop</a></li>
+    <li><a routerLink="/blog" routerLinkActive="active-link" (click)="toggleSidebar()">Blog</a></li>
+    <li><a routerLink="/about" routerLinkActive="active-link" (click)="toggleSidebar()">About</a></li>
+    <li><a routerLink="/contact" routerLinkActive="active-link" (click)="toggleSidebar()">Contact</a></li>
+   
+  </ul>
+</div>

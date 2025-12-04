@@ -13,7 +13,18 @@
      (change)="search(serchValue.value)">
     <button type="submit" class="search-button">Search</button>
   </div>
+  <!-- Filter Bar Component -->
+  <app-filter-bar
+  [categories]="categories"
+  [selectedCategory]="selectedCategory"
+  [sortBy]="sortBy"
+  (selectedCategoryChange)="updateCategory($event)"
+  (sortByChange)="updateSort($event)"
+  (reset)="resetFilters()"
+></app-filter-bar>
+
 </section>
+<app-pagination></app-pagination>
 <app-products></app-products>
 <app-banners></app-banners>
 <app-news-letters></app-news-letters>

@@ -1,7 +1,6 @@
 #contact-header {
     background-image: url(../../../assets/img/about/banner.png);
 }
-
 #contact-details{
     display: flex;
     align-items: center;
@@ -242,3 +241,30 @@ $breakpoints: (
     margin-bottom: 30px;
   }
 }
+
+// @media (max-width: 477px) {
+//   #contact-details {
+//   display: flex;
+//   flex-direction: column;
+  
+// }
+// #contact-details .details {
+//   width: 100%;
+//   margin-bottom: 30px;
+
+// }
+// #contact-details .map {
+//   width: 100%;
+  
+// }
+// #form-details {
+
+//   padding: 30px 10px;
+//   margin: 10px;
+//   flex-wrap: wrap;
+// }
+// #form-details form {
+//   width: 100%;
+//   margin-bottom: 30px;
+// }
+// }

@@ -7,6 +7,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 
+//------------------------------
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatOptionModule } from '@angular/material/core';
+import { MatLabel } from '@angular/material/form-field';
+//----------------------------------------
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,7 +26,7 @@ import { FeaturesComponent } from './components/features/features.component';
 import { BannersComponent } from './components/banners/banners.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProductsComponent } from './components/products/products.component';
-import { NavbarComponet } from './components/navbar/navbar.component';
+import { NavbarComponent} from './components/navbar/navbar.component';  
 import { NewsLettersComponent } from './components/news-letters/news-letters.component';
 //pages
 import { HomeComponent } from './pages/home/home.component';
@@ -30,7 +37,8 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { SingleProductComponent } from './pages/single-product/single-product.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-
+import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +48,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     NewsLettersComponent,
     FooterComponent,
     ProductsComponent,
-    NavbarComponet,
+    NavbarComponent,
     HomeComponent,
     ShopComponent,
     AboutComponent,
@@ -48,9 +56,9 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     ContactComponent,
     CartComponent,
     SingleProductComponent,
+    FilterBarComponent,
+    PaginationComponent,
     
-
-
   ],
   imports: [
     BrowserModule,
@@ -62,12 +70,17 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     MatToolbarModule,
     MatIconModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    MatOptionModule
   ],
   providers: [
     provideClientHydration(),
     provideHttpClient(withFetch()),
     provideAnimationsAsync()
+    
   ],
   bootstrap: [AppComponent]
 })
