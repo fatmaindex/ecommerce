@@ -18,8 +18,9 @@ export class ProductsService {
   }
 
   //get products by category or all products with pagination
-  getProductsByCategory(
-    category: string,
+  getProducts(
+    searchQuery?: string,
+    category?: string,
     page: number = 1,
     limit: number = 12
   ): Observable<any> {
@@ -29,6 +30,9 @@ export class ProductsService {
     if (category && category !== "all") {
       params = params.set("category", category);
     }
+    if (searchQuery) {
+      params = params.set("search", searchQuery);
+    }
     return this.httpClient.get(environment.apiUrl, {
       params,
       headers: { "Cache-Control": "no-cache", Pragma: "no-cache" },
@@ -36,11 +40,12 @@ export class ProductsService {
   }
 
   // search products by category or by title(name)
-  searchProducts(searchQuery: string): Observable<IProduct[]> {
-    //mesh fahma le da?
-    this.searchEmmeter.emit(searchQuery);
-    return this.httpClient.get<IProduct[]>( 
-       `${environment.apiUrl}/search`,
-    { params: { searchInput: searchQuery } }
-  );    
-}}
+//   searchProducts(searchQuery: string): Observable<IProduct[]> {
+//     //mesh fahma le da?
+//     this.searchEmmeter.emit(searchQuery);
+//     return this.httpClient.get<IProduct[]>( 
+//        `${environment.apiUrl}/search`,
+//     { params: { searchInput: searchQuery } }
+//   );    
+// }
+}

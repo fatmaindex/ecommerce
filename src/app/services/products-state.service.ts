@@ -28,7 +28,7 @@ export class ProductsStateService {
     let page = this.pageSource.getValue();
 
     this.productsService
-      .getProductsByCategory(category, page, this.limit)
+      .getProducts("", category, page, this.limit)
       .subscribe({
         next: (res) => {
           this.productsSource.next(res.products);
@@ -53,9 +53,12 @@ export class ProductsStateService {
     this.loadProducts();
   }
   search(searchQuery: string): void {
-    this.productsService.searchProducts(searchQuery).subscribe({
+    this.productsService.getProducts(searchQuery).subscribe({
         next: (res) => {
-          this.productsSource.next(res);
+          this.productsSource.next(res.products);
+           this.totalPagesSource.next(res.totalPages);
+          this.pageSource.next(res.pageNumber);
+          this.limit = res.limit;
         },
         error: (err) => {
           console.log(err);
