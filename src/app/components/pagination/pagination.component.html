@@ -1,10 +1,17 @@
 <section id="pagination-section" class="section-p1">
   <ul id="pagination" class="listpage section-p1">
-    <li href=""><i class="fa fa-long-arrow-left"></i></li>
-    <li href="">1</li>
-    <li href="">2</li>
-  
-    <li href="">3</li>
-    <li href=""><i class="fa fa-long-arrow-right"></i></li>
+    <li (click)="previousPage()" [class.disabled]="currentPage === 1">
+      <i class="fa fa-long-arrow-left"></i>
+    </li>
+    <li
+      *ngFor="let p of getPagesArray()"
+      (click)="goTo(p)"
+      [class.active-page]="p === currentPage"
+    >
+      {{ p }}
+    </li>
+    <li (click)="nextPage()" [class.disabled]="currentPage === totalPages">
+      <i class="fa fa-long-arrow-right"></i>
+    </li>
   </ul>
 </section>

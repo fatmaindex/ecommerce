@@ -1,4 +1,4 @@
-<div class="filter-bar " >
+<div class="filter-bar section-p1">
   <div class="filter-controls">
     <!-- Category Select -->
     <mat-form-field appearance="outline" class="w-180">
@@ -8,7 +8,7 @@
         (selectionChange)="onCategoryChange($event.value)"
       >
         <mat-option value="all">All Categories</mat-option>
-        <mat-option *ngFor="let category of categories" [value]="category">
+        <mat-option  *ngFor="let category of categories" [value]="category">
           {{ category }}
         </mat-option>
       </mat-select>
@@ -16,7 +16,6 @@
 
     <!-- Sort Select -->
     <mat-form-field appearance="outline" class="w-180">
-      <!-- <mat-label>Sort By</mat-label> -->
       <mat-select
         [value]="sortBy"
         (selectionChange)="onSortChange($event.value)"

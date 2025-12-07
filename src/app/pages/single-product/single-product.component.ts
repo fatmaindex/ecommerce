@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProductsServiceService } from './../../services/products-service.service';
+import { ProductsService } from '../../services/products.service';
 import { IProduct } from '../../models/IProduct';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../../services/cart.service';
@@ -15,7 +15,7 @@ export class SingleProductComponent {
   selectedPrd!: IProduct;
   selectedPrdID: number = 0;
 
-  constructor(private productsService: ProductsServiceService,
+  constructor(private productsService: ProductsService,
     private activatedRoute: ActivatedRoute,
     private cartService: CartService,
     private snackBar: MatSnackBar

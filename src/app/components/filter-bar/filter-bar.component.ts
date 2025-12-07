@@ -1,28 +1,36 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
-  selector: 'app-filter-bar',
-  templateUrl: './filter-bar.component.html',
-  styleUrls: ['./filter-bar.component.scss']
+  selector: "app-filter-bar",
+  templateUrl: "./filter-bar.component.html",
+  styleUrls: ["./filter-bar.component.scss"],
 })
 export class FilterBarComponent {
- @Input() categories: string[] = [];
-  @Input() selectedCategory: string = 'all';
-  @Input() sortBy: string = 'default';
+  categories = [
+    "Tops",
+    "Jackets",
+    "Dresses",
+    "Pants / Jeans",
+    "Skirts",
+    "Hoodies / Sweatshirts",
+    "Sportswear",
+    "Men fashion",
+  ];
+  selectedCategory = "all";
+  sortBy = "default";
+  @Output() categoryChanged: EventEmitter<string> = new EventEmitter<string>();
 
-  @Output() selectedCategoryChange = new EventEmitter<string>();
-  @Output() sortByChange = new EventEmitter<string>();
-  @Output() reset = new EventEmitter<void>();
-
-  onCategoryChange(value: string) {
-    this.selectedCategoryChange.emit(value);
+  onCategoryChange(category: string) {
+    this.selectedCategory = category;
+    this.categoryChanged.emit(this.selectedCategory);
   }
-
-  onSortChange(value: string) {
-    this.sortByChange.emit(value);
+  onSortChange(sortOption: string) {
+    this.sortBy = sortOption;
   }
-
   onResetClick() {
-    this.reset.emit();
+    this.selectedCategory = "all";
+    this.categoryChanged.emit(this.selectedCategory);
+
+    // this.sortBy = "default";
   }
 }

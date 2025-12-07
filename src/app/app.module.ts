@@ -6,6 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { ReactiveFormsModule } from '@angular/forms';
 
 //------------------------------
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -39,6 +40,7 @@ import { SingleProductComponent } from './pages/single-product/single-product.co
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,6 +60,7 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     SingleProductComponent,
     FilterBarComponent,
     PaginationComponent,
+    SearchBarComponent,
     
   ],
   imports: [
@@ -74,7 +77,8 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
-    MatOptionModule
+    MatOptionModule,
+    ReactiveFormsModule 
   ],
   providers: [
     provideClientHydration(),

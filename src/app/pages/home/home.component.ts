@@ -1,45 +1,33 @@
-import { Component, EventEmitter } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { Component } from "@angular/core";
+import { ProductsStateService } from "../../services/products-state.service";
 
-import { ProductsServiceService } from "./../../services/products-service.service";
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
-  styleUrl: "./home.component.scss",
+  styleUrls: ["./home.component.scss"],
 })
 export class HomeComponent {
-  // Filter and Sort properties
-  categories = [
-    "Tops",
-    "Jackets",
-    "Dresses",
-    "Pants / Jeans",
-    "Skirts",
-    "Hoodies / Sweatshirts",
-    "Sportswear",
-    "Men fashion",
-  ];
-  selectedCategory = "all";
-  sortBy = "default";
+  products$;
+  totalPages$;
+  page$;
 
-  updateCategory(category: string) {
-    this.selectedCategory = category;
+  constructor(private state: ProductsStateService) {
+    this.products$ = this.state.products$;
+    this.totalPages$ = this.state.totalPages$;
+    this.page$ = this.state.page$;
   }
 
-  updateSort(sort: string) {
-    this.sortBy = sort;
+  ngOnInit(): void {
+    this.state.loadProducts();
+  }
+  onCategorySelected(category: string) {
+    this.state.setCategory(category);
   }
 
-  resetFilters() {
-    this.selectedCategory = "all";
-    this.sortBy = "default";
+  onPageChanged(page: number) {
+    this.state.setPage(page);
   }
-  // End of Filter and Sort properties
-  constructor(
-    private ProductsServiceService: ProductsServiceService,
-    private HttpClient: HttpClient
-  ) {}
-  search(searchInputValue: string): void {
-    this.ProductsServiceService.searchEmmeter.emit(searchInputValue);
-  }
+  onSearch(searchQuery: string) { 
+    this.state.search(searchQuery);
+    }
 }

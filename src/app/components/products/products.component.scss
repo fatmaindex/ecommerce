@@ -8,11 +8,12 @@
     grid-template-columns: repeat(4,1fr);
     grid-template-rows: auto;
     height: auto;
-
-    gap: 1rem;
+    gap:1rem;
     justify-content: center;
   }
-  
+  .section-p1{
+    padding:0px 80px  ;
+  }
   #products .pro {
     width: 23%;
     min-width: 250px;

@@ -7,12 +7,12 @@ import {
   WebAnimationsDriver,
   WebAnimationsStyleNormalizer
 } from "./chunk-76HWGGNL.js";
+import "./chunk-AXM2ZTXT.js";
 import {
   BrowserModule,
   DomRendererFactory2
 } from "./chunk-ZNGCY7OR.js";
 import "./chunk-Q2B4BD6J.js";
-import "./chunk-AXM2ZTXT.js";
 import {
   DOCUMENT
 } from "./chunk-HE5PWX4F.js";
@@ -30,8 +30,8 @@ import {
   ɵɵdefineNgModule,
   ɵɵinject
 } from "./chunk-D3IQWCZR.js";
-import "./chunk-SZQPEDTI.js";
 import "./chunk-PIQKY2LV.js";
+import "./chunk-SZQPEDTI.js";
 import "./chunk-Q3R3BXB2.js";
 
 // node_modules/@angular/platform-browser/fesm2022/animations.mjs

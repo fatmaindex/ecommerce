@@ -3,28 +3,13 @@
 <section id="product1" class="section-p1">
   <h2>Featured Products</h2>
   <p>Summer Collection New Modern Design</p>
-  <div class="search-container">
-    <label for="search" class="search-label">Search Products</label>
-    <input 
-    type="text"
-     id="search" class="search-input" 
-     placeholder="Search for products..."
-     #serchValue
-     (change)="search(serchValue.value)">
-    <button type="submit" class="search-button">Search</button>
-  </div>
-  <!-- Filter Bar Component -->
-  <app-filter-bar
-  [categories]="categories"
-  [selectedCategory]="selectedCategory"
-  [sortBy]="sortBy"
-  (selectedCategoryChange)="updateCategory($event)"
-  (sortByChange)="updateSort($event)"
-  (reset)="resetFilters()"
-></app-filter-bar>
-
+  <app-search-bar (onSearch)="onSearch($event)"></app-search-bar>
 </section>
-<app-pagination></app-pagination>
-<app-products></app-products>
+ <!-- Filter Bar Component -->
+  <app-filter-bar
+ (categoryChanged)="onCategorySelected($event)"></app-filter-bar>
+<app-products  [shownProducts]="(products$ | async) ?? []"></app-products>
+<app-pagination  [currentPage]="(page$ | async) ?? 1"
+  [totalPages]="(totalPages$ | async) ?? 1" (pageChange)="onPageChanged($event)"></app-pagination>
 <app-banners></app-banners>
 <app-news-letters></app-news-letters>

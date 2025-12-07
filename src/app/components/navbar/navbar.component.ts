@@ -7,7 +7,7 @@
 // })
 // export class NavbarComponet {
 //   cartProductsNum:number|null=null;
-  
+
 //   constructor(private cartService: CartService) {
 //    this.cartService.cartProductsNumSubject.subscribe(num=>{
 //     this.cartProductsNum=num
@@ -16,7 +16,6 @@
 
 // }
 
-
 // import { Component } from '@angular/core';
 
 // @Component({
@@ -26,7 +25,7 @@
 // })
 // export class NavbarComponent {
 
-//   isActive = false; 
+//   isActive = false;
 
 //   toggleMenu() {
 //     this.isActive = !this.isActive;
@@ -36,8 +35,6 @@
 //     this.isActive = false;
 //   }
 // }
-
-
 
 // import { Component } from '@angular/core';
 
@@ -60,7 +57,6 @@
 
 // }
 
-
 // import { Component } from '@angular/core';
 
 // @Component({
@@ -82,18 +78,15 @@
 
 // }
 
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  selector: "app-navbar",
+  templateUrl: "./navbar.component.html",
+  styleUrls: ["./navbar.component.scss"],
 })
 export class NavbarComponent {
-
-    isActive = false;
-
-
+  isActive = false;
 
   closeMenu() {
     this.isActive = false;
@@ -103,5 +96,4 @@ export class NavbarComponent {
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
   }
-
 }

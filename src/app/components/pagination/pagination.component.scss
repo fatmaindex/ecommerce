@@ -7,6 +7,9 @@
   gap: 3px;
   list-style: none;
 }
+ .section-p1{
+    padding:20px 80px  ;
+  }
 #pagination li {
   text-decoration: none;
   background-color: #088178;
@@ -15,9 +18,24 @@
   color: #fff;
   font-weight: 600;
 }
-#pagination .active
-,#shop-pagination .active{
-  text-decoration: none;
+// #pagination .active
+// ,#shop-pagination .active{
+//   text-decoration: none;
+//   background-color:transparent;
+//   padding: 15px 20px;
+//   border-radius: 4px;
+//   color:  #088178;
+//   font-weight: 600;
+//   border: 2px solid  #088178;
+// }
+
+
+#pagination li i {
+  font-size: 16px;
+  font-weight: 600;
+}
+.active-page{
+   text-decoration: none;
   background-color:transparent;
   padding: 15px 20px;
   border-radius: 4px;
@@ -25,9 +43,8 @@
   font-weight: 600;
   border: 2px solid  #088178;
 }
-
-
-#pagination li i {
-  font-size: 16px;
-  font-weight: 600;
+.disabled{
+  pointer-events: none;
+  opacity: 0.6; 
+  background-color:#4bada6; 
 }

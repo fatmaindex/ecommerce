@@ -1,6 +1,6 @@
 <section id="products" class="section-p1">
   <div class="pro-container" >
-    <div class="pro" *ngFor="let product of shownProducts">
+    <div class="pro" *ngFor="let product of shownProducts?? []">
       <img src="{{ product.image }}" alt="pro-img" class="proImg" />
       <div class="des">
         <span>{{product.category}}</span>

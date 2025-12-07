@@ -2,15 +2,48 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 20px;
 }
-
+.section-p1 {
+  padding: 0px 80px;
+}
 .filter-controls {
   display: flex;
   gap: 12px;
 }
-
 .w-180 {
   width: 180px;
 }
+
+
+
+// /* Tablets */
+// @media (max-width: 992px) {
+//   .section-p1 { padding: 0 28px; }
+//   .filter-controls { gap: 8px; }
+//   .w-140 { width: 130px; }
+// }
+
+// /* Mobile: stack and full-width but still compact */
+// @media (max-width: 768px) {
+//   .filter-bar {
+//     flex-direction: column;
+//     align-items: stretch;
+//     gap: 10px;
+//   }
+
+//   .filter-controls {
+//     width: 100%;
+//     display: flex;
+//     flex-direction: column;
+//   }
+
+//   .w-140 { width: 100%; }
+//   button[mat-stroked-button] { width: 50%; }
+//   .section-p1 { padding: 0 12px; }
+// }
+
+// /* very small phones */
+// @media (max-width: 480px) {
+//   .filter-controls ::ng-deep .mat-form-field-infix { padding: 5px 8px; height: 34px; }
+//   button[mat-stroked-button] { padding: 5px 8px; font-size: 12px; min-height: 34px; }
+// }
