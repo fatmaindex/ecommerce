@@ -7,7 +7,7 @@
 </section>
  <!-- Filter Bar Component -->
   <app-filter-bar
- (categoryChanged)="onCategorySelected($event)"></app-filter-bar>
+ (categoryChanged)="onCategorySelected($event)" (sortChanged)="onSortChanged($event)"></app-filter-bar>
 <app-products  [shownProducts]="(products$ | async) ?? []"></app-products>
 <app-pagination  [currentPage]="(page$ | async) ?? 1"
   [totalPages]="(totalPages$ | async) ?? 1" (pageChange)="onPageChanged($event)"></app-pagination>

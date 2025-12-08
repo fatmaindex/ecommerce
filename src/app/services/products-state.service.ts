@@ -19,6 +19,9 @@ export class ProductsStateService {
   private categorySource = new BehaviorSubject<string>("all");
   category$ = this.categorySource.asObservable();
 
+  private sortSource = new BehaviorSubject<string>("default");
+  sort$ = this.sortSource.asObservable();
+
   private limit = 12;
 
   constructor(private productsService: ProductsService) {}
@@ -26,26 +29,30 @@ export class ProductsStateService {
   loadProducts() {
     let category = this.categorySource.getValue();
     let page = this.pageSource.getValue();
+    let sortOption = this.sortSource.getValue();
 
-    this.productsService
-      .getProducts("", category, page, this.limit)
-      .subscribe({
-        next: (res) => {
-          this.productsSource.next(res.products);
-          this.totalPagesSource.next(res.totalPages);
-          this.pageSource.next(res.pageNumber);
-          this.limit = res.limit;
-        },
-        error: (err) => {
-          console.log(err);
-        },
-        complete: () => console.log("done"),
-      });
+    this.productsService.getProducts("", category,sortOption, page, this.limit).subscribe({
+      next: (res) => {
+        this.productsSource.next(res.products);
+        this.totalPagesSource.next(res.totalPages);
+        this.pageSource.next(res.pageNumber);
+        this.limit = res.limit;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+      complete: () => console.log("done"),
+    });
   }
 
   setCategory(category: string): void {
     this.categorySource.next(category);
     this.pageSource.next(1);
+    this.loadProducts();
+  }
+  setSort(sortOption: string): void {
+    this.sortSource.next(sortOption);
+    // this.pageSource.next(1);
     this.loadProducts();
   }
   setPage(newPage: number): void {
@@ -54,16 +61,16 @@ export class ProductsStateService {
   }
   search(searchQuery: string): void {
     this.productsService.getProducts(searchQuery).subscribe({
-        next: (res) => {
-          this.productsSource.next(res.products);
-           this.totalPagesSource.next(res.totalPages);
-          this.pageSource.next(res.pageNumber);
-          this.limit = res.limit;
-        },
-        error: (err) => {
-          console.log(err);
-        },
-        complete: () => console.log("done"),
-      });
+      next: (res) => {
+        this.productsSource.next(res.products);
+        this.totalPagesSource.next(res.totalPages);
+        this.pageSource.next(res.pageNumber);
+        this.limit = res.limit;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+      complete: () => console.log("done"),
+    });
   }
 }

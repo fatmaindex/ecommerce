@@ -19,6 +19,7 @@ export class FilterBarComponent {
   selectedCategory = "all";
   sortBy = "default";
   @Output() categoryChanged: EventEmitter<string> = new EventEmitter<string>();
+  @Output() sortChanged: EventEmitter<string> = new EventEmitter<string>();
 
   onCategoryChange(category: string) {
     this.selectedCategory = category;
@@ -26,11 +27,13 @@ export class FilterBarComponent {
   }
   onSortChange(sortOption: string) {
     this.sortBy = sortOption;
+    this.sortChanged.emit(this.sortBy);
   }
   onResetClick() {
     this.selectedCategory = "all";
     this.categoryChanged.emit(this.selectedCategory);
 
-    // this.sortBy = "default";
+    this.sortBy = "default";
+    this.sortChanged.emit(this.sortBy);
   }
 }

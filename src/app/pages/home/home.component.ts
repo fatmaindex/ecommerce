@@ -23,7 +23,9 @@ export class HomeComponent {
   onCategorySelected(category: string) {
     this.state.setCategory(category);
   }
-
+onSortChanged(sortOption: string) {
+    this.state.setSort(sortOption);
+  }
   onPageChanged(page: number) {
     this.state.setPage(page);
   }

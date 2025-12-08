@@ -21,6 +21,7 @@ export class ProductsService {
   getProducts(
     searchQuery?: string,
     category?: string,
+    sortOption?: string,
     page: number = 1,
     limit: number = 12
   ): Observable<any> {
@@ -32,6 +33,9 @@ export class ProductsService {
     }
     if (searchQuery) {
       params = params.set("search", searchQuery);
+    }
+     if (sortOption) {
+      params = params.set("sort", sortOption);
     }
     return this.httpClient.get(environment.apiUrl, {
       params,
