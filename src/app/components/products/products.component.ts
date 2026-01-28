@@ -1,4 +1,4 @@
-import { Component, Input} from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { ProductsService } from "../../services/products.service";
 import { IProduct } from "./../../models/IProduct";
 import { CartService } from "./../../services/cart.service";
@@ -10,17 +10,14 @@ import { MatSnackBar } from "@angular/material/snack-bar";
   styleUrl: "./products.component.scss",
 })
 export class ProductsComponent {
- @Input() shownProducts: IProduct[] = [];
-
-  //  filteredProcuts: IProduct[] = [];
-  // sentSearchInputValue!: string;
+  @Input() shownProducts: IProduct[] = [];
 
   constructor(
     private ProductsService: ProductsService,
     private cartService: CartService,
     private snackBar: MatSnackBar
   ) {}
-  
+
   // function to send the selected product to the cart service
   addToCart(prd: IProduct): void {
     let cartPrd = { ...prd, quantity: 1, subTotal: prd.price * 1 };
@@ -45,7 +42,6 @@ export class ProductsComponent {
           });
         } else {
           this.cartService.carList.push(cartProduct);
-
           // Show the snackbar notification
           this.snackBar.open("Product added to cart!", "Close", {
             duration: 2000,
@@ -67,5 +63,4 @@ export class ProductsComponent {
       },
     });
   }
-
 }

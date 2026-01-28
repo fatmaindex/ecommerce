@@ -30,18 +30,18 @@ export class CartService {
       this.cartProductsNum=(this.cartProductsNum??0)+1
       this.cartProductsNumSubject.next(this.cartProductsNum)
       // Update the product quantity on the cart enpoint
-      return this.httpClient.put<cartProduct>(`${environment.cartURL}/${existingProduct.id}`, existingProduct, this.httpOptions)
+      return this.httpClient.put<cartProduct>(`${environment.cartUrl}/${existingProduct.id}`, existingProduct, this.httpOptions)
     }
     else {
       // Safely increment cart count
       this.cartProductsNum=(this.cartProductsNum??0)+product.quantity
       this.cartProductsNumSubject.next(this.cartProductsNum)    
-        return this.httpClient.post<cartProduct>(environment.cartURL, product, this.httpOptions)
+        return this.httpClient.post<cartProduct>(environment.cartUrl, product, this.httpOptions)
     }
   }
   //get the products from cart endpoint
   getCart(): Observable<cartProduct[]> {
-    return this.httpClient.get<cartProduct[]>(environment.cartURL);
+    return this.httpClient.get<cartProduct[]>(environment.cartUrl);
   }
   // Store fetched cart products in the cartlist array in the local service
   loadCart(): void{
@@ -58,14 +58,14 @@ export class CartService {
     this.cartProductsNum=(this.cartProductsNum??0)-1
       this.cartProductsNumSubject.next(this.cartProductsNum)
 
-    let cartURL = `${environment.cartURL}/${id}`;
+    let cartURL = `${environment.cartUrl}/${id}`;
     return this.httpClient.delete<void>(cartURL, this.httpOptions)
   }
   // updte quantity
   updateQuantity(quantity: string, cartPrd: cartProduct): Observable<any> {
     cartPrd.quantity = Number(quantity);
     cartPrd.subTotal = Number(quantity) * cartPrd.price
-    return this.httpClient.put(`${environment.cartURL}/${cartPrd.id}`, cartPrd, this.httpOptions)
+    return this.httpClient.put(`${environment.cartUrl}/${cartPrd.id}`, cartPrd, this.httpOptions)
   }
 
 }

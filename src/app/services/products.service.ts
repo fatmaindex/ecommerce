@@ -2,19 +2,21 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import { EventEmitter, Injectable } from "@angular/core";
 import { environment } from "../../environment/environment";
 import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
 import { IProduct } from "../models/IProduct";
 
 @Injectable({
   providedIn: "root",
 })
 export class ProductsService {
+  // tepoo error?????---------
   searchEmmeter = new EventEmitter<string>();
   constructor(private httpClient: HttpClient) {}
 
   // Get product by ID
   getProductByID(id: number): Observable<IProduct | undefined> {
-  return this.httpClient.get<IProduct>(`${environment.apiUrl}/${id}`);
+  return this.httpClient.get<IProduct>(`${environment.productsUrl}/${id}`,{
+      withCredentials: true
+  });
   }
 
   //get products by category or all products with pagination
@@ -37,19 +39,11 @@ export class ProductsService {
      if (sortOption) {
       params = params.set("sort", sortOption);
     }
-    return this.httpClient.get(environment.apiUrl, {
+    return this.httpClient.get(environment.productsUrl, {
       params,
       headers: { "Cache-Control": "no-cache", Pragma: "no-cache" },
+      withCredentials: true
     });
   }
 
-  // search products by category or by title(name)
-//   searchProducts(searchQuery: string): Observable<IProduct[]> {
-//     //mesh fahma le da?
-//     this.searchEmmeter.emit(searchQuery);
-//     return this.httpClient.get<IProduct[]>( 
-//        `${environment.apiUrl}/search`,
-//     { params: { searchInput: searchQuery } }
-//   );    
-// }
 }

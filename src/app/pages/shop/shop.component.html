@@ -1,9 +1,9 @@
 <section class="page-header" id="shop-header">
-  <h2>#stayhome</h2>
+  <h2>Shop the Latest Fashion</h2>
   <p>Save More With Coupons & Up To 70% Off!</p>
 </section>
 <!-- Filter Bar Component -->
-<app-filter-bar (categoryChanged)="onCategorySelected($event)"></app-filter-bar>
+<app-filter-bar (categoryChanged)="onCategorySelected($event)" (sortChanged)="onSortChanged($event)"></app-filter-bar>
 <app-products [shownProducts]="(products$ | async)?? []"></app-products>
 <app-pagination
   [currentPage]="(page$ | async)?? 1"

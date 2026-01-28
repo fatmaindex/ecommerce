@@ -1,9 +1,9 @@
 <section id="products" class="section-p1">
-  <div class="pro-container" >
-    <div class="pro" *ngFor="let product of shownProducts?? []">
+  <div class="pro-container">
+    <div class="pro" *ngFor="let product of shownProducts ?? []">
       <img src="{{ product.image }}" alt="pro-img" class="proImg" />
       <div class="des">
-        <span>{{product.category}}</span>
+        <span>{{ product.category }}</span>
         <a class="cardLink" [routerLink]="['/singleProduct', product.id]">
           <h5>{{ product.title.slice(0, 30) }}</h5>
         </a>
@@ -16,7 +16,9 @@
         </div>
         <h4>{{ product.price }}</h4>
       </div>
-      <a class="cartLink" (click)="addToCart(product)"><i class="bi bi-cart3 cart"></i></a>
+      <a class="cartLink" (click)="addToCart(product)"
+        ><i class="bi bi-cart3 cart"></i
+      ></a>
     </div>
   </div>
 </section>

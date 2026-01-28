@@ -1,4 +1,4 @@
-//modules
+// modules
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
@@ -8,28 +8,30 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { ReactiveFormsModule } from '@angular/forms';
 
-//------------------------------
+// ------------------------------
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule } from '@angular/material/core';
-import { MatLabel } from '@angular/material/form-field';
-//----------------------------------------
+// ----------------------------------------
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+// تم حذف استيراد الكلاس TokenInterceptor واستبداله باستيراد الدالة
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { tokenInterceptor } from './interceptors/token.interceptor'; // ✅ استيراد الدالة الجديدة
+
+// components
 import { AppComponent } from './app.component';
-//components
 import { HeroComponent } from './components/hero/hero.component';
 import { FeaturesComponent } from './components/features/features.component';
 import { BannersComponent } from './components/banners/banners.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProductsComponent } from './components/products/products.component';
-import { NavbarComponent} from './components/navbar/navbar.component';  
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { NewsLettersComponent } from './components/news-letters/news-letters.component';
-//pages
+// pages
 import { HomeComponent } from './pages/home/home.component';
 import { ShopComponent } from './pages/shop/shop.component';
 import { AboutComponent } from './pages/about/about.component';
@@ -41,6 +43,10 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +67,9 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     FilterBarComponent,
     PaginationComponent,
     SearchBarComponent,
-    
+    ProfileComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +77,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     FormsModule,
     MatSnackBarModule,
     BrowserAnimationsModule,
-    MatButtonModule,  
+    MatButtonModule,
     MatToolbarModule,
     MatIconModule,
     MatSidenavModule,
@@ -78,13 +86,17 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     MatSelectModule,
     MatInputModule,
     MatOptionModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
   ],
   providers: [
     provideClientHydration(),
-    provideHttpClient(withFetch()),
-    provideAnimationsAsync()
-    
+    provideAnimationsAsync(),
+    // 🎯 هنا التعديل الرئيسي: استخدام الدالة tokenInterceptor مباشرة
+    provideHttpClient(
+      withInterceptors([
+        tokenInterceptor // ✅ تمرير الدالة هنا
+      ])
+    )
   ],
   bootstrap: [AppComponent]
 })
