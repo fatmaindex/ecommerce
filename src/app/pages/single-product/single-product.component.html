@@ -1,141 +1,85 @@
-<section id="prodetails" class="section-p1">
-  <div class="single-pro-img">
-    <img
-      src="{{selectedPrd?.image}}"
-      width="100%"
-      id="MainImage"
-    />
-    <div class="small-img-group">
-      <div class="small-img-col">
-        <img
-          src="../../../assets/img/products/f1.jpg"
-          width="100%"
-          class="small-img"
-        />
-      </div>
-      <div class="small-img-col">
-        <img
-          src="../../../assets/img/products/f2.jpg"
-          width="100%"
-          class="small-img"
-        />
-      </div>
-      <div class="small-img-col">
-        <img
-          src="../../../assets/img/products/f3.jpg"
-          width="100%"
-          class="small-img"
-        />
-      </div>
-      <div class="small-img-col">
-        <img
-          src="../../../assets/img/products/f4.jpg"
-          width="100%"
-          class="small-img"
-        />
-      </div>
-    </div>
-  </div>
+@if (selectedPrd) {
+<div class="shopcart-container">
+  <nav class="breadcrumb-nav">
+    Electronics / Audio / Headphones / <span>{{selectedPrd.title}}</span>
+  </nav>
 
-  <div class="single-pro-details">
-    <h6>{{selectedPrd.category}}</h6>
-    <h4>{{selectedPrd?.title}}</h4>
-    <h2>{{selectedPrd?.price}}</h2>
-    <h5 id="avlQuantity">{{selectedPrd.quantity}} items left</h5>
-    <select>
-      <option>Select Size</option>
-      <option>XL</option>
-      <option>XXL</option>
-      <option>Small</option>
-      <option>Large</option>
-    </select>
-    <input 
-    id="quantityInput"
-  type="number" 
-  #quantity 
-  [min]="1" 
-  [max]="selectedPrd.quantity" 
-  [value]="1" 
-  oninput="this.value = Math.max(this.min, Math.min(this.max, this.value))"
-/>
+  <main class="product-main-section">
+    <div class="image-gallery">
+      <div class="main-display">
+        <img [src]="selectedPrd.image" id="MainImage" />
+      </div>
+      <div class="thumbnail-list">
+        <img [src]="selectedPrd.image" class="active" />
+        <img src="../../../assets/img/products/f1.jpg" />
+        <img src="../../../assets/img/products/f2.jpg" />
+        <img src="../../../assets/img/products/f3.jpg" />
+      </div>
+    </div>
 
-      <button class="normal" id="cartButton" (click)="addToCart(quantity.value)">Add To Cart</button>
-    <h4>product Details</h4>
-    <span>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam tempora
-      accusamus odio quod! Perspiciatis praesentium iste, iure quidem commodi
-      non neque esse vero mollitia, veritatis corporis, error eos veniam Lorem
-      ipsum dolor sit amet consectetur adipisicing elit. Commodi cupiditate.
-    </span>
-  </div>
-</section>
-<section id="product1" class="section-p1">
-  <h2>Featured Products</h2>
-  <p>Summer Collection New Modern Design</p>
-  <div class="proContainer2">
-    <div class="pro">
-      <img src="../../../assets/img/products/n1.jpg" alt="" />
-      <div class="des">
-        <span>adidas</span>
-        <h5>Cartoon Astronaut T-Shirts</h5>
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-        <h4>$78</h4>
+    <div class="product-details">
+      <h1 class="main-title">{{selectedPrd.title}}</h1>
+      <!-- <p class="sub-text">{{selectedPrd.description | slice:0:150}}...</p> -->
+      
+      <div class="rating-strip">
+        <div class="stars">★★★★★</div>
+        <span class="count">(121)</span>
       </div>
-      <a href=""><i class="bi bi-cart3 cart"></i></a>
-    </div>
-    <div class="pro">
-      <img src="../../../assets/img/products/n2.jpg" alt="" />
-      <div class="des">
-        <span>adidas</span>
-        <h5>Cartoon Astronaut T-Shirts</h5>
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-        <h4>$78</h4>
+
+      <hr class="line">
+
+      <div class="price-box">
+        <h2 class="price-val">{{selectedPrd.price | currency:'USD'}} or 99.99/month</h2>
+        <p class="price-sub">Suggested payments with 6 months special financing</p>
       </div>
-      <a href=""><i class="bi bi-cart3 cart"></i></a>
-    </div>
-    <div class="pro">
-      <img src="../../../assets/img/products/n3.jpg" alt="" />
-      <div class="des">
-        <span>adidas</span>
-        <h5>Cartoon Astronaut T-Shirts</h5>
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
+
+      <hr class="line">
+
+      <div class="color-picker">
+        <p class="label">Choose a Color</p>
+        <div class="color-dots">
+          <span class="dot red active"></span>
+          <span class="dot black"></span>
+          <span class="dot green"></span>
+          <span class="dot white"></span>
+          <span class="dot blue"></span>
         </div>
-        <h4>$78</h4>
       </div>
-      <a href=""><i class="bi bi-cart3 cart"></i></a>
-    </div>
-    <div class="pro">
-      <img src="../../../assets/img/products/n4.jpg" alt="" />
-      <div class="des">
-        <span>adidas</span>
-        <h5>Cartoon Astronaut T-Shirts</h5>
-        <div class="star">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
+
+      <div class="cart-actions">
+        <div class="qty-box">
+          <button (click)="qty.value = (+qty.value > 1 ? +qty.value - 1 : 1).toString()">-</button>
+          <input type="number" #qty value="1" readonly />
+          <button (click)="qty.value = (+qty.value < selectedPrd.quantity ? +qty.value + 1 : selectedPrd.quantity).toString()">+</button>
         </div>
-        <h4>$78</h4>
+        <div class="stock-warning">
+          Only <span class="highlight">{{selectedPrd.quantity}} Items</span> Left! <br>
+          <small>Don't miss it</small>
+        </div>
       </div>
-      <a href=""><i class="bi bi-cart3 cart"></i></a>
+
+      <div class="btns-row">
+        <button class="buy-btn">Buy Now</button>
+        <button class="add-btn" (click)="onAddToCart(qty.value)">Add to Cart</button>
+      </div>
+
+      <div class="service-cards">
+        <div class="s-card">
+          <i class="fas fa-truck"></i>
+          <div>
+            <strong>Free Delivery</strong>
+            <p>Enter your Postal code for Delivery Availability</p>
+          </div>
+        </div>
+        <div class="s-card">
+          <i class="fas fa-undo"></i>
+          <div>
+            <strong>Return Delivery</strong>
+            <p>Free 30days Delivery Returns. <a href="#">Details</a></p>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </main>
+</div>
+}

@@ -11,7 +11,7 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   getProfile() {
-    console.log("sccesstokeeeeeeeeeeeen",localStorage.getItem("accessToken"));
+    console.log("sccesstoken",localStorage.getItem("accessToken"));
     return this.http.get(`${this.apiUrl}/users/me`);
   }
 

@@ -13,7 +13,7 @@ export class ProductsService {
   constructor(private httpClient: HttpClient) {}
 
   // Get product by ID
-  getProductByID(id: number): Observable<IProduct | undefined> {
+  getProductByID(id: string): Observable<IProduct | undefined> {
   return this.httpClient.get<IProduct>(`${environment.productsUrl}/${id}`,{
       withCredentials: true
   });

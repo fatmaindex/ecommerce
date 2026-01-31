@@ -1,0 +1,35 @@
+
+<div class="product-card" (click)="goToDetails()">
+  <div class="image-wrapper">
+    <img [src]="product?.image" [alt]="product?.title" class="product-img" />
+    <button class="wishlist-btn">
+      <i class="far fa-heart"></i>
+    </button>
+  </div>
+
+  <div class="product-content">
+    <div class="header-row">
+      <a [routerLink]="['/singleProduct', product?.id]" class="title">
+        {{ product?.title?.slice(0, 20) }}...
+      </a>
+      <span class="price"><sup>$</sup>{{ product?.price }}</span>
+    </div>
+
+    <p class="description">{{ product?.category }} - High quality product</p>
+
+    <div class="rating-row">
+      <div class="stars">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+      </div>
+      <span class="count">(121)</span>
+    </div>
+
+    <button class="add-btn" (click)="$event.stopPropagation(); onAddToCart()">
+      Add to Cart
+    </button>
+  </div>
+</div>

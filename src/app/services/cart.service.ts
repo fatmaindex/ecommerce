@@ -1,74 +1,42 @@
-import { Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environment/environment';
-import { BehaviorSubject, Observable, reduce } from 'rxjs';
-import { HttpHeaders } from '@angular/common/http';
-import { cartProduct } from './../viewModels/cartProduct';
-@Injectable({
-  providedIn: 'root'
-})
+import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { Cart } from '../models/cart.model';
+
+@Injectable({ providedIn: 'root' })
 export class CartService {
-  carList: cartProduct[]=[] ;
-  cartProductsNum:number|null=null;
-  cartProductsNumSubject = new BehaviorSubject<number|null>(null)
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-    })
+
+  private readonly API_URL = 'https://localhost:3000/api/cart'; 
+  
+  private cartSubject = new BehaviorSubject<Cart | null>(null);
+  cart$ = this.cartSubject.asObservable(); 
+
+  constructor(private http: HttpClient) {
+    this.loadCart(); // تحميل السلة أول ما الموقع يفتح
   }
-  constructor(private httpClient: HttpClient) { 
-    this.loadCart()
-  }
-  // add the resieved product (from single-product component) to the cart enpoint
-  addToCart(product: cartProduct): Observable<cartProduct> {
-    let existingProduct = this.carList.find((prd) => { return prd.id == product.id })
-    if (existingProduct) {
-      // Update the quantity if the product already exists in the cart
-      existingProduct.quantity++;
-      existingProduct.subTotal = existingProduct.price * existingProduct.quantity;
-      // Safely increment cart count
-      this.cartProductsNum=(this.cartProductsNum??0)+1
-      this.cartProductsNumSubject.next(this.cartProductsNum)
-      // Update the product quantity on the cart enpoint
-      return this.httpClient.put<cartProduct>(`${environment.cartUrl}/${existingProduct.id}`, existingProduct, this.httpOptions)
-    }
-    else {
-      // Safely increment cart count
-      this.cartProductsNum=(this.cartProductsNum??0)+product.quantity
-      this.cartProductsNumSubject.next(this.cartProductsNum)    
-        return this.httpClient.post<cartProduct>(environment.cartUrl, product, this.httpOptions)
-    }
-  }
-  //get the products from cart endpoint
-  getCart(): Observable<cartProduct[]> {
-    return this.httpClient.get<cartProduct[]>(environment.cartUrl);
-  }
-  // Store fetched cart products in the cartlist array in the local service
-  loadCart(): void{
-    this.getCart().subscribe((cartProducts) => {
-      this.carList = cartProducts;
-      this.cartProductsNum = cartProducts.reduce((acc,product)=>acc+product.quantity ,0);  // Update number of products
+
+  // جلب البيانات من الـ API
+  loadCart() {
+    this.http.get<Cart>(this.API_URL).subscribe({
+      next: (cart) => this.cartSubject.next(cart),
+      error: (err) => console.error('Error loading cart', err)
     });
-   this.cartProductsNum= this.carList.reduce((acc,product)=>acc+product.quantity,0)
-    this.cartProductsNumSubject.next(this.cartProductsNum)
-  }
-  // delete product from the cart endpoint
-  deleteProduct(id: number): Observable<void> {
-     // Safely decrement cart count
-    this.cartProductsNum=(this.cartProductsNum??0)-1
-      this.cartProductsNumSubject.next(this.cartProductsNum)
-
-    let cartURL = `${environment.cartUrl}/${id}`;
-    return this.httpClient.delete<void>(cartURL, this.httpOptions)
-  }
-  // updte quantity
-  updateQuantity(quantity: string, cartPrd: cartProduct): Observable<any> {
-    cartPrd.quantity = Number(quantity);
-    cartPrd.subTotal = Number(quantity) * cartPrd.price
-    return this.httpClient.put(`${environment.cartUrl}/${cartPrd.id}`, cartPrd, this.httpOptions)
   }
 
+  // في السيرفس - لازم نستخدم return ونشيل الـ subscribe من هنا
+addToCart(productId: number, quantity: number) {
+  return this.http.post<Cart>(this.API_URL, { productId, quantity }).pipe(
+    tap((updatedCart) => {
+      this.cartSubject.next(updatedCart);
+    })
+  );
 }
 
 
-
+  // مسح منتج
+  removeItem(productId: string) {
+    this.http.delete(`${this.API_URL}/${productId}`).subscribe(() => {
+      this.loadCart();
+    });
+  }
+}

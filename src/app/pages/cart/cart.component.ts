@@ -1,54 +1,33 @@
-// CartComponent
+
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
-import { cartProduct } from './../../viewModels/cartProduct';
+import { Cart } from '../../models/cart.model';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent {
-  shownCartList: cartProduct[] =[];
-  total: number = 0;
-  constructor(private cartService: CartService) {
-    this.cartService.loadCart();
-    this.shownCartList = this.cartService.carList;
-    this.calculateTotal(); // Calculate total whenever cart changes
-   }
+export class CartComponent implements OnInit {
+  cartData: any = null;
 
-  calculateTotal(): void {
-    // Calculate total price of items in shownCartList
-    const sum = this.shownCartList.reduce((acc, curr) => acc + curr.subTotal, 0);
-    const factor = Math.pow(10, 3);
-    this.total = Math.round(sum * factor) / factor;
-  }
-  //delete product from the cart by its id
-  deleteProduct(prdID: number) {
-    this.cartService.deleteProduct(prdID).subscribe({
-      next: () => {
-        // let updatedProductsNum = this.cartService.productsNum--;  // Update number of products
-        // this.cartService.NumEmitter.emit(updatedProductsNum);  // Emit number of items for updates elsewhere
+  constructor(private cartService: CartService) {}
 
-        this.shownCartList = this.shownCartList.filter(product => product.id !== prdID);
-        this.calculateTotal();
-      },
-      error: (err) => {
-        console.error('Error deleting item:', err);
-      }
-    });
-  }
-  // update quantity
-  updateQuantity(quantity: string, cartPrd: cartProduct) {
-    this.cartService.updateQuantity(quantity, cartPrd)
-      .subscribe({
-        next: (updatedPrd) => {
-          this.cartService.loadCart();
-        },
-        error: (err) => {
-          console.error('Error updating cart product', err);
-        }
-      });
+ ngOnInit(): void {
+  // 1. اشتركي في الـ Observable عشان أي تغيير يحصل (حذف/إضافة) يغير الـ UI فوراً
+  this.cartService.cart$.subscribe((data) => {
+    this.cartData = data;
+    console.log("Cart updated in UI:", data);
+  });
+
+  // 2. اطلبي من السيرفر أحدث بيانات أول ما الصفحة تفتح
+  this.cartService.loadCart();
+}
+
+  onRemoveItem(productId: string) {
+    if(confirm('Are you sure?')) {
+      this.cartService.removeItem(productId);
+    }
   }
 
 }

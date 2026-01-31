@@ -46,6 +46,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { ProfileComponent } from './pages/profile/profile.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { RegisterComponent } from './pages/register/register.component';
     ProfileComponent,
     LoginComponent,
     RegisterComponent,
+    ProductCardComponent,
   ],
   imports: [
     BrowserModule,

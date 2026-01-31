@@ -8,11 +8,12 @@ const authFreeEndpoints: string[] = [
   "/auth/refresh",
 ];
 
+
 const isAuthFreeEndpoint = (url: string): boolean => {
   return authFreeEndpoints.some((endpoint) => url.includes(endpoint));
 };
 
-
+//ده وظيفته إنه ياخد الـ Token من الـ localStorage ويحطه في الـ Authorization Header أوتوماتيك مع كل Request رايح للـ Backend.
 export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
   const token = localStorage.getItem("accessToken");
   
