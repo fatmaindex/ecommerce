@@ -1,0 +1,64 @@
+<section class="page-header" id="cart-header">
+  <h2>#cart</h2>
+  <p>Add Your Coupon Code & Save up to 70%!</p>
+</section>
+
+<section id="cart" class="section-p1">
+  <table width="100%">
+    <thead>
+      <tr>
+        <td>Remove</td>
+        <td>Image</td>
+        <td>Product</td>
+        <td>Price</td>
+        <td>Quantity</td>
+        <td>Subtotal</td>
+      </tr>
+    </thead>
+    <tbody id="cartContent">
+      <tr *ngFor="let item of cartData?.items">
+        <td>
+          <a (click)="onRemoveItem(item.product.id)">
+            <i class="fa-regular fa-circle-xmark" id="deleteIcon"></i>
+          </a>
+        </td>
+        <td><img [src]="item.product.image" [alt]="item.product.title" /></td>
+        <td>{{ item.product.title }}</td>
+        <td>{{ item.price | currency }}</td>
+        <td>
+          <input type="number" [value]="item.quantity" min="1" readonly />
+        </td>
+        <td>{{ item.subTotal | currency }}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="cart-add" class="section-p1">
+  <div id="coupon">
+    <h3>Apply Coupon</h3>
+    <input type="text" placeholder="Enter Your Coupon" />
+    <button class="normal">Apply</button>
+  </div>
+
+  <div id="subtotal">
+    <h3>Cart totals</h3>
+    <table>
+      <tr>
+        <td>Cart subtotals</td>
+        <td>{{ cartData?.totalPrice | currency }}</td>
+      </tr>
+      <tr>
+        <td>shipping</td>
+        <td>Free</td>
+      </tr>
+      <tr>
+        <td><strong>Total</strong></td>
+        <td>
+          <strong>{{ cartData?.totalPrice | currency }}</strong>
+        </td>
+      </tr>
+    </table>
+    <button class="normal">Proceed to checkout</button>
+  </div>
+</section>

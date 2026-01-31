@@ -1,0 +1,270 @@
+#contact-header {
+    background-image: url(../../../../assets/img/about/banner.png);
+}
+#contact-details{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  #contact-details .details{
+    width: 40%;
+  }
+  #contact-details .details span,
+  #form-details form span
+  {
+    font-size: 12px;
+  }
+  #contact-details .details h2,
+  #form-details form h2
+  {
+    font-size: 26px;
+    line-height: 35px;
+    padding: 20px 0;
+  }
+  #contact-details .details h3{
+    font-size: 16px;
+    padding-bottom: 15px;
+  }
+  #contact-details .details li{
+    list-style: none;
+    display: flex;
+    padding: 10px 0;
+  
+  }
+  #contact-details .details li i{
+  font-size: 14px;
+  padding-right: 22px;
+  
+  }
+  #contact-details .details li p{
+    font-size: 14px;
+    margin: 0;
+    
+    }
+    #contact-details .map{
+      width: 55%;
+      height: 400px;
+      
+      }
+      #contact-details .map iframe{
+        width: 100%;
+        height: 100%;
+        
+        }
+    
+      /* ----------------------------------------------------------- */
+      #form-details {
+        display: flex;
+        justify-content: space-between;
+        padding: 80px;
+        margin: 30px;
+        border: 1px solid #e1e1e1;
+      }
+      #form-details form{
+        width: 65%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      #form-details form input,
+      #form-details form textarea
+      {
+        width: 100%;
+        padding: 12px 15px;
+        outline: none;
+        margin-bottom: 20px;
+        border: 1px solid #e1e1e1;
+      
+      }
+      #form-details form button{
+        background-color: #088178;
+        color: #fff;
+      }
+      #form-details .person{
+        padding-bottom: 25px;
+        display: flex;
+        align-items: flex-start;
+  
+      }
+      #form-details .person img{
+        width: 65px;
+        height: 65px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-right: 15px;
+      }
+      #form-details .person p{
+     margin: 0;
+     font-size: 13px;
+     line-height: 25px;
+      }
+  
+      #form-details .people div p span{
+        display: block;
+        font-size: 16px;
+        font-weight: 600;
+        color: #000;
+      
+      }
+
+      
+//---------------------------responsive style-------------------------------------
+$breakpoints: (
+  mop: 320px,
+  xsm: 420px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1024px,
+  laptop: 1280px,
+  xxl: 1800px,
+);
+
+// Define the mixin
+@mixin breakpoint($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @error "Invalid breakpoint: #{$breakpoint}.";
+  }
+}
+
+@include breakpoint(mop) {
+  #contact-details {
+    display: flex;
+    flex-direction: column;
+    
+  }
+  #contact-details .details {
+    width: 100%;
+    margin-bottom: 30px;
+  
+  }
+  #contact-details .map {
+    width: 100%;
+    
+  }
+  #form-details {
+  
+    padding: 30px 10px;
+    margin: 10px;
+    flex-wrap: wrap;
+  }
+  #form-details form {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}
+
+@include breakpoint(sm) {
+  #contact-details {
+    display: flex;
+    flex-direction: column;
+    
+  }
+  #contact-details .details {
+    width: 100%;
+    margin-bottom: 30px;
+  
+  }
+  #contact-details .map {
+    width: 100%;
+    
+  }
+  #form-details {
+  
+    padding: 30px 10px;
+    margin: 10px;
+    flex-wrap: wrap;
+  }
+  #form-details form {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}
+
+@include breakpoint(md) {
+  #contact-details {
+    display: flex;
+    flex-direction: row;
+    
+  }
+  #contact-details .details {
+    width: 50%;
+    margin-bottom: 30px;
+  
+  }
+  #contact-details .map {
+    width: 50%;
+    
+  }
+  #form-details {
+  
+    padding: 60px;
+    margin: 20px;
+    flex-wrap: nowrap;
+ 
+  }
+  #form-details form {
+    width: 50%;
+    margin-bottom: 30px;
+  }
+}
+
+@include breakpoint(xl) {
+
+  #contact-details {
+    display: flex;
+    flex-direction: row;
+    
+  }
+  #contact-details .details {
+    width: 50%;
+    margin-bottom: 30px;
+  
+  }
+  #contact-details .map {
+    width: 50%;
+    
+  }
+  #form-details {
+  
+    padding: 80px;
+    margin: 30px;
+    flex-wrap: nowrap;
+ 
+  }
+  #form-details form {
+    width: 65%;
+    margin-bottom: 30px;
+  }
+}
+
+// @media (max-width: 477px) {
+//   #contact-details {
+//   display: flex;
+//   flex-direction: column;
+  
+// }
+// #contact-details .details {
+//   width: 100%;
+//   margin-bottom: 30px;
+
+// }
+// #contact-details .map {
+//   width: 100%;
+  
+// }
+// #form-details {
+
+//   padding: 30px 10px;
+//   margin: 10px;
+//   flex-wrap: wrap;
+// }
+// #form-details form {
+//   width: 100%;
+//   margin-bottom: 30px;
+// }
+// }

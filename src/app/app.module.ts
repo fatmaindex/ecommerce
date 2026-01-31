@@ -20,33 +20,33 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 // تم حذف استيراد الكلاس TokenInterceptor واستبداله باستيراد الدالة
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { tokenInterceptor } from './interceptors/token.interceptor'; // ✅ استيراد الدالة الجديدة
+import { tokenInterceptor } from './core/interceptors/token.interceptor'; // ✅ استيراد الدالة الجديدة
 
 // components
 import { AppComponent } from './app.component';
-import { HeroComponent } from './components/hero/hero.component';
-import { FeaturesComponent } from './components/features/features.component';
-import { BannersComponent } from './components/banners/banners.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { ProductsComponent } from './components/products/products.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { NewsLettersComponent } from './components/news-letters/news-letters.component';
+import { HeroComponent } from './shared/components/hero/hero.component';
+import { FeaturesComponent } from './shared/components/features/features.component';
+import { BannersComponent } from './shared/components/banners/banners.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
+import { ProductsComponent } from './features/products/products/products.component';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { NewsLettersComponent } from './shared/components/news-letters/news-letters.component';
 // pages
-import { HomeComponent } from './pages/home/home.component';
-import { ShopComponent } from './pages/shop/shop.component';
-import { AboutComponent } from './pages/about/about.component';
-import { BlogComponent } from './pages/blog/blog.component';
-import { ContactComponent } from './pages/contact/contact.component';
-import { CartComponent } from './pages/cart/cart.component';
-import { SingleProductComponent } from './pages/single-product/single-product.component';
+import { HomeComponent } from './features/public/home/home.component';
+import { ShopComponent } from './features/products/shop/shop.component';
+import { AboutComponent } from './features/public/about/about.component';
+import { BlogComponent } from './features/public/blog/blog.component';
+import { ContactComponent } from './features/public/contact/contact.component';
+import { CartComponent } from './features/cart/cart/cart.component';
+import { SingleProductComponent } from './features/products/single-product/single-product.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
-import { PaginationComponent } from './components/pagination/pagination.component';
-import { SearchBarComponent } from './components/search-bar/search-bar.component';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
-import { ProductCardComponent } from './components/product-card/product-card.component';
+import { FilterBarComponent } from './features/products/filter-bar/filter-bar.component';
+import { PaginationComponent } from './features/products/pagination/pagination.component';
+import { SearchBarComponent } from './features/products/search-bar/search-bar.component';
+import { ProfileComponent } from './features/profile/profile/profile.component';
+import { LoginComponent } from './features/auth/login/login.component';
+import { RegisterComponent } from './features/auth/register/register.component';
+import { ProductCardComponent } from './features/products/product-card/product-card.component';
 
 @NgModule({
   declarations: [

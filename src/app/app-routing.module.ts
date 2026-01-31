@@ -1,15 +1,15 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { HomeComponent } from "./pages/home/home.component";
-import { ShopComponent } from "./pages/shop/shop.component";
-import { AboutComponent } from "./pages/about/about.component";
-import { BlogComponent } from "./pages/blog/blog.component";
-import { ContactComponent } from "./pages/contact/contact.component";
-import { CartComponent } from "./pages/cart/cart.component";
-import { SingleProductComponent } from "./pages/single-product/single-product.component";
-import { ProfileComponent } from "./pages/profile/profile.component";
-import { RegisterComponent } from "./pages/register/register.component";
-import { LoginComponent } from "./pages/login/login.component";
+import { HomeComponent } from "./features/public/home/home.component";
+import { ShopComponent } from "./features/products/shop/shop.component";
+import { AboutComponent } from "./features/public/about/about.component";
+import { BlogComponent } from "./features/public/blog/blog.component";
+import { ContactComponent } from "./features/public/contact/contact.component";
+import { CartComponent } from "./features/cart/cart/cart.component";
+import { SingleProductComponent } from "./features/products/single-product/single-product.component";
+import { ProfileComponent } from "./features/profile/profile/profile.component";
+import { RegisterComponent } from "./features/auth/register/register.component";
+import { LoginComponent } from "./features/auth/login/login.component";
 // import { LoginComponent } from "./pages/login/login.component";
 // import { ProfileComponent } from "./pages/profile/profile.component";
 const routes: Routes = [
