@@ -9,7 +9,7 @@
 
   <div class="product-content">
     <div class="header-row">
-      <a [routerLink]="['/singleProduct', product?.id]" class="title">
+      <a [routerLink]="['/products', product?.id]" class="title">
         {{ product?.title?.slice(0, 20) }}...
       </a>
       <span class="price"><sup>$</sup>{{ product?.price }}</span>

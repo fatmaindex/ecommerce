@@ -1,10 +1,30 @@
 import { Component } from "@angular/core";
 import { ProductsStateService } from "../../products/products-state.service";
-
+import { HeroComponent } from "../../../shared/components/hero/hero.component";
+import { FeaturesComponent } from "../../../shared/components/features/features.component";
+import { SearchBarComponent } from "../../products/search-bar/search-bar.component";
+import { FilterBarComponent } from "../../products/filter-bar/filter-bar.component";
+import { ProductsComponent } from "../../products/products/products.component";
+import { PaginationComponent } from "../../products/pagination/pagination.component";
+import { BannersComponent } from "../../../shared/components/banners/banners.component";
+import { NewsLettersComponent } from "../../../shared/components/news-letters/news-letters.component";
+import { CommonModule } from "@angular/common";
 @Component({
   selector: "app-home",
+  standalone: true,
+  imports: [
+    CommonModule,
+    HeroComponent,
+    FeaturesComponent,
+    SearchBarComponent,
+    FilterBarComponent,
+    ProductsComponent,
+    PaginationComponent,
+    BannersComponent,
+    NewsLettersComponent
+  ],
   templateUrl: "./home.component.html",
-  styleUrls: ["./home.component.scss"],
+  styleUrl: "./home.component.scss",
 })
 export class HomeComponent {
   products$;

@@ -1,20 +1,22 @@
-# Ecommerce
+# 🛒 Ecommerce Store - Angular Professional Implementation
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.3.
+This project is a modern E-commerce frontend built with **Angular 18**, focusing on high-quality architecture and clean code standards.
 
-## Development server
+## ✨ Why this project stands out?
+Unlike standard tutorials, this project implements the **Angular Style Guide** for enterprise applications:
+* **Feature-based Folders:** Organized by business logic (Auth, Cart, Products) rather than just file types.
+* **Clean Models:** Strict TypeScript interfaces for data safety (e.g., `Product` model).
+* **Scalable Structure:** Clear separation between `Core` (global logic) and `Shared` (reusable UI) modules.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🛠 Features
+* **Authentication Flow:** Secure login/register with route guards and JWT interceptors.
+* **Product Discovery:** Advanced searching, filtering, and pagination.
+* **Shopping Experience:** Full cart management with reactive state.
 
-## Code scaffolding
+## 🚀 How to Run
+1.  `npm install`
+2.  `ng serve`
+3.  Open `http://localhost:4200/`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+---
+*Note: This project was structured to follow Google's recommended patterns for scalable Angular apps.*

@@ -1,35 +1,28 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import { HomeComponent } from "./features/public/home/home.component";
-import { ShopComponent } from "./features/products/shop/shop.component";
-import { AboutComponent } from "./features/public/about/about.component";
-import { BlogComponent } from "./features/public/blog/blog.component";
-import { ContactComponent } from "./features/public/contact/contact.component";
-import { CartComponent } from "./features/cart/cart/cart.component";
-import { SingleProductComponent } from "./features/products/single-product/single-product.component";
-import { ProfileComponent } from "./features/profile/profile/profile.component";
-import { RegisterComponent } from "./features/auth/register/register.component";
-import { LoginComponent } from "./features/auth/login/login.component";
-// import { LoginComponent } from "./pages/login/login.component";
-// import { ProfileComponent } from "./pages/profile/profile.component";
-const routes: Routes = [
-  { path: "", redirectTo: "/home", pathMatch: "full" },
-  { path: "home", component: HomeComponent },
-  { path: "shop", component: ShopComponent },
-  { path: "about", component: AboutComponent },
-  { path: "blog", component: BlogComponent },
-  { path: "contact", component: ContactComponent },
-  { path: "cart", component: CartComponent },
-  { path: "singleProduct/:pid", component: SingleProductComponent },
-  { path: "profile", component: ProfileComponent },
-  { path: "login", component: LoginComponent},
-  { path: "register", component: RegisterComponent },
-  // { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: "**", redirectTo: "login" },
-];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}
+import { Routes } from '@angular/router';
+import { PUBLIC_ROUTES } from './features/public/public.routes';
+import { AUTH_ROUTES } from './features/auth/auth.routes';
+export const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { 
+    path: '', 
+    loadChildren: () => import('./features/public/public.routes').then(r => r.PUBLIC_ROUTES) 
+  },
+  { 
+    path: 'products', 
+    loadChildren: () => import('./features/products/products.routes').then(r => r.PRODUCT_ROUTES) 
+  },
+  { 
+    path: 'auth', 
+    loadChildren: () => import('./features/auth/auth.routes').then(r => r.AUTH_ROUTES) 
+  },
+  { 
+    path: 'cart', 
+    loadComponent: () => import('./features/cart/cart/cart.component').then(c => c.CartComponent) 
+  },
+  { 
+    path: 'profile', 
+    loadComponent: () => import('./features/profile/profile/profile.component').then(c => c.ProfileComponent) 
+  },
+  { path: '**', redirectTo: 'home' }
+];

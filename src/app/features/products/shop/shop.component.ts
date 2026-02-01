@@ -1,9 +1,21 @@
 import { Component } from "@angular/core";
-import { Product } from "../../../shared/models/product.model";
 import { ProductsStateService } from "../products-state.service";
+import { CommonModule } from "@angular/common";
+import { FilterBarComponent } from "../filter-bar/filter-bar.component";
+import { ProductsComponent } from "../products/products.component";
+import { PaginationComponent } from "../pagination/pagination.component";
+import { NewsLettersComponent } from "../../../shared/components/news-letters/news-letters.component";
 
 @Component({
   selector: "app-shop",
+  standalone: true,
+  imports: [
+    CommonModule, 
+    FilterBarComponent, 
+    ProductsComponent, 
+    PaginationComponent, 
+    NewsLettersComponent
+  ],
   templateUrl: "./shop.component.html",
   styleUrls: ["./shop.component.scss"],
 })

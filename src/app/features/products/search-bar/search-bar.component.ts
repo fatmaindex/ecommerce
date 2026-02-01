@@ -1,9 +1,10 @@
 import { Component, Output, EventEmitter } from "@angular/core";
-import { ProductsStateService } from "../products-state.service";
-import { FormControl, FormGroup } from "@angular/forms";
+import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
 
 @Component({
   selector: "app-search-bar",
+  standalone:true,
+  imports: [ReactiveFormsModule],
   templateUrl: "./search-bar.component.html",
   styleUrl: "./search-bar.component.scss",
 })

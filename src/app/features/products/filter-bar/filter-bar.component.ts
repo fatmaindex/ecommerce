@@ -1,11 +1,16 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { Component, Output, EventEmitter } from "@angular/core";
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: "app-filter-bar",
+  selector: 'app-filter-bar',
+  standalone: true,
+  imports: [CommonModule, MatFormFieldModule, MatSelectModule],
   templateUrl: "./filter-bar.component.html",
-  styleUrls: ["./filter-bar.component.scss"],
+  styleUrl: "./filter-bar.component.scss"
 })
-export class FilterBarComponent {
+export class FilterBarComponent { 
   categories = [
     "Tops",
     "Jackets",

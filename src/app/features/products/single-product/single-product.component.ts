@@ -3,9 +3,12 @@ import { ProductsService } from '../products.service';
 import { Product } from '../../../shared/models/product.model';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../../cart/cart.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-single-product',
+  standalone: true,
+  imports: [CommonModule, MatSnackBarModule],
   templateUrl: './single-product.component.html',
   styleUrl: './single-product.component.scss'
 })
@@ -17,7 +20,7 @@ export class SingleProductComponent implements OnInit {
   constructor(
     private productsService: ProductsService,
     private activatedRoute: ActivatedRoute,
-    public cartService: CartService, // خليها public عشان نستخدمها في الـ HTML
+    public cartService: CartService,
     private snackBar: MatSnackBar
   ) {}
 

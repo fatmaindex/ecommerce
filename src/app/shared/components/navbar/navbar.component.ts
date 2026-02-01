@@ -1,87 +1,10 @@
-// import { CartService } from '../../services/cart.service';
-
-// @Component({
-//   selector: 'app-navbar',
-//   templateUrl: './navbar.component.html',
-//   styleUrl: './navbar.component.scss'
-// })
-// export class NavbarComponet {
-//   cartProductsNum:number|null=null;
-
-//   constructor(private cartService: CartService) {
-//    this.cartService.cartProductsNumSubject.subscribe(num=>{
-//     this.cartProductsNum=num
-//    })
-//   }
-
-// }
-
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-navbar',
-//   templateUrl: './navbar.component.html',
-//   styleUrls: ['./navbar.component.scss']
-// })
-// export class NavbarComponent {
-
-//   isActive = false;
-
-//   toggleMenu() {
-//     this.isActive = !this.isActive;
-//   }
-
-//   closeMenu() {
-//     this.isActive = false;
-//   }
-// }
-
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-navbar',
-//   templateUrl: './navbar.component.html',
-//   styleUrls: ['./navbar.component.scss']
-// })
-// export class NavbarComponent {
-
-//   isActive = false;
-
-//   toggleMenu() {
-//     this.isActive = !this.isActive;
-//   }
-
-//   closeMenu() {
-//     this.isActive = false;
-//   }
-
-// }
-
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-navbar',
-//   templateUrl: './navbar.component.html',
-//   styleUrls: ['./navbar.component.scss']
-// })
-// export class NavbarComponent {
-
-//   isActive = false;
-
-//   toggleMenu() {
-//     this.isActive = !this.isActive;
-//   }
-
-//   closeMenu() {
-//     this.isActive = false;
-//   }
-
-// }
-
 import { Component } from "@angular/core";
+import { RouterModule } from "@angular/router";
 
 @Component({
   selector: "app-navbar",
+  standalone: true,
+  imports: [RouterModule],
   templateUrl: "./navbar.component.html",
   styleUrls: ["./navbar.component.scss"],
 })

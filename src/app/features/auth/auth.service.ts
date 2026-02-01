@@ -17,13 +17,8 @@ export class AuthService {
     if (token) this.setUserFromToken(token);
   }
 
-  // ----------------------------------------------------
-  // ✅ الدالة المطلوبة للتحقق من حالة المستخدم (للاستخدام في الـ Guards)
-  // ----------------------------------------------------
   public getUser(): any | null {
-    // ترجع قيمة المستخدم الحالية المخزنة في الـ BehaviorSubject
-    // هذا سيعيد null إذا لم يكن هناك مستخدم مسجل الدخول
-    return this.currentUserSubject.value; 
+    return this.currentUserSubject.value;
   }
   private setUserFromToken(token: string) {
     const decoded: any = jwtDecode(token);
@@ -36,15 +31,15 @@ export class AuthService {
 
   login(credentials: { email: string; password: string }) {
     return this.http
-      .post<{ accessToken: string; user: any }>(
-        `${this.baseUrl}/auth/login`,
-        credentials
-      )
+      .post<{
+        accessToken: string;
+        user: any;
+      }>(`${this.baseUrl}/auth/login`, credentials)
       .pipe(
         tap((res) => {
           localStorage.setItem("accessToken", res.accessToken);
           this.setUserFromToken(res.accessToken);
-        })
+        }),
       );
   }
 
