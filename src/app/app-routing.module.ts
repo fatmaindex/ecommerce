@@ -1,7 +1,4 @@
-
 import { Routes } from '@angular/router';
-import { PUBLIC_ROUTES } from './features/public/public.routes';
-import { AUTH_ROUTES } from './features/auth/auth.routes';
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { 

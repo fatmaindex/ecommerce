@@ -37,19 +37,37 @@ export class SingleProductComponent implements OnInit {
   }
 
   // 3. فانكشن الـ Add to Cart بالكمية المختارة
+  // onAddToCart(quantity: string) {
+  //   if (!this.selectedPrd) return;
+
+  //   const qty = parseInt(quantity);
+  //   this.cartService.addToCart(this.selectedPrd.id, qty).subscribe({
+  //     next: () => {
+  //       this.snackBar.open("Added to cart successfully! 🛒", "Close", { duration: 2000 });
+  //     },
+  //     error: (err:any) => {
+  //       if (err.status === 403) {
+  //         this.snackBar.open("Please login first!", "Close", { duration: 3000 });
+  //       }
+  //     }
+  //   });
+  // }
+
+  // ... باقي الكود كما هو ...
+
   onAddToCart(quantity: string) {
     if (!this.selectedPrd) return;
 
-    const qty = parseInt(quantity);
-    this.cartService.addToCart(this.selectedPrd.id, qty).subscribe({
-      next: () => {
-        this.snackBar.open("Added to cart successfully! 🛒", "Close", { duration: 2000 });
-      },
-      error: (err) => {
-        if (err.status === 403) {
-          this.snackBar.open("Please login first!", "Close", { duration: 3000 });
-        }
-      }
+    const qty = parseInt(quantity) || 1; // تأمين لو الكمية مبعوتة غلط
+
+    // نادى الفانكشن مباشرة بدون subscribe
+    // وبنبعت الـ selectedPrd كله مش بس الـ ID
+    this.cartService.addToCart(this.selectedPrd, qty);
+
+    // بنطلع الـ SnackBar فوراً لأن السيرفس بتحدث الـ Subject في جزء من الثانية
+    this.snackBar.open("Added to cart successfully! 🛒", "Close", { 
+      duration: 2000,
+      panelClass: ['success-snackbar'] // اختياري لشكل أحلى
     });
   }
 }

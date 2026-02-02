@@ -1,15 +1,239 @@
 
+// .product-card {
+//   background: #ffffff;
+//   border-radius: 20px;
+//   padding: 15px;
+//   display: flex;
+//   flex-direction: column;
+//   transition: transform 0.3s ease;
+//   height: 100%;
+// cursor: pointer;
+//   &:hover {
+//     transform: translateY(-5px);
+//   }
+
+//   .image-wrapper {
+//     background-color: #f5f6f6; 
+//     border-radius: 15px;
+//     height: 230px;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     position: relative;
+//     margin-bottom: 12px;
+
+//     img {
+//       max-width: 85%;
+//       max-height: 85%;
+//       object-fit: contain;
+//     }
+
+//     .wishlist-btn {
+//       position: absolute;
+//       top: 12px;
+//       right: 12px;
+//       background: white;
+//       border: none;
+//       width: 32px;
+//       height: 32px;
+//       border-radius: 50%;
+//       display: flex;
+//       align-items: center;
+//       justify-content: center;
+//       color: #333;
+//       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+//       cursor: pointer;
+//     }
+//   }
+
+//   .product-content {
+//     .header-row {
+//       display: flex;
+//       justify-content: space-between;
+//       align-items: flex-start;
+//       margin-bottom: 4px;
+
+//       .title {
+//         font-size: 16px;
+//         font-weight: 700;
+//         color: #1a1a1a;
+//         text-decoration: none;
+//         &:hover { color: #008178; }
+//       }
+
+//       .price {
+//         font-size: 16px;
+//         font-weight: 800;
+//         color: #1a1a1a;
+//         sup { font-size: 10px; margin-right: 1px; }
+//       }
+//     }
+
+//     .description {
+//       font-size: 11px;
+//       color: #7a7a7a;
+//       margin-bottom: 12px;
+//     }
+
+//     .rating-row {
+//       display: flex;
+//       align-items: center;
+//       gap: 6px;
+//       margin-bottom: 15px;
+
+//       .stars {
+//         color: #00b01e; // اللون الأخضر بتاع النجوم في Shopcart
+//         font-size: 10px;
+//       }
+//       .count {
+//         font-size: 11px;
+//         color: #b5b5b5;
+//       }
+//     }
+
+//     .add-btn {
+//       width: 100%;
+//       padding: 10px;
+//       background: transparent;
+//       border: 1.5px solid #1a1a1a;
+//       border-radius: 25px;
+//       color: #1a1a1a;
+//       font-weight: 600;
+//       font-size: 13px;
+//       cursor: pointer;
+//       transition: all 0.2s;
+
+//       &:hover {
+//         background: #003d29; // الأخضر الغامق بتاع Shopcart
+//         color: white;
+//         border-color: #003d29;
+//       }
+//     }
+//   }
+// }
+
+
+
+// .product-card {
+//   background: #ffffff;
+//   border-radius: 20px;
+//   padding: 15px;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-between; // عشان يوزع المحتوى ويخلي الزراير في سوى واحد
+//   transition: transform 0.3s ease, box-shadow 0.3s ease;
+//   height: 100%; // لازم الـ Parent يكون flex/grid عشان دي تشتغل
+//   cursor: pointer;
+//   border: 1px solid #eee; // تحديد بسيط عشان يبان حدود الكارت
+
+//   &:hover {
+//     transform: translateY(-8px); // الـ Hover اللي عجبك
+//     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+//   }
+
+//   .image-wrapper {
+//     background-color: #f5f6f6; 
+//     border-radius: 15px;
+//     height: 230px;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     position: relative;
+//     margin-bottom: 12px;
+
+//     img {
+//       max-width: 85%;
+//       max-height: 85%;
+//       object-fit: contain;
+//     }
+//   }
+
+//   .product-content {
+//     flex-grow: 1; // بتخلي المحتوى يملأ الفراغ عشان الزراير تترص تحت بعضها
+//     display: flex;
+//     flex-direction: column;
+
+//     .header-row {
+//       display: flex;
+//       justify-content: space-between;
+//       align-items: flex-start;
+//       margin-bottom: 4px;
+
+//       .title {
+//         font-size: 16px;
+//         font-weight: 700;
+//         color: #1a1a1a;
+//       }
+
+//       .price {
+//         font-size: 16px;
+//         font-weight: 800;
+//         color: #1a1a1a;
+//         sup { font-size: 10px; margin-right: 1px; }
+//       }
+//     }
+
+//     .description {
+//       font-size: 11px;
+//       color: #7a7a7a;
+//       margin-bottom: 12px;
+//     }
+
+//     .rating-row {
+//       display: flex;
+//       align-items: center;
+//       gap: 6px;
+//       margin-top: auto; // بتزق الـ Rating والزرار لتحت خالص
+//       margin-bottom: 15px;
+
+//       .stars {
+//         color: #00b01e;
+//         font-size: 10px;
+//       }
+//       .count {
+//         font-size: 11px;
+//         color: #b5b5b5;
+//       }
+//     }
+
+//     .add-btn {
+//       width: 100%;
+//       padding: 10px;
+//       background: transparent;
+//       border: 1.5px solid #1a1a1a;
+//       border-radius: 25px;
+//       color: #1a1a1a;
+//       font-weight: 600;
+//       font-size: 13px;
+//       cursor: pointer;
+//       transition: all 0.2s;
+
+//       &:hover {
+//         background: #003d29;
+//         color: white;
+//         border-color: #003d29;
+//       }
+//     }
+//   }
+// }
+
+
 .product-card {
   background: #ffffff;
   border-radius: 20px;
   padding: 15px;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   height: 100%;
-cursor: pointer;
+  cursor: pointer;
+  border: 1px solid #eee;
+  position: relative; // لضمان ثبات الكارت
+
   &:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
   }
 
   .image-wrapper {
@@ -21,32 +245,21 @@ cursor: pointer;
     justify-content: center;
     position: relative;
     margin-bottom: 12px;
+    pointer-events: none; // بيخلي الضغطة "تعدي" من الصورة وتروح للكارت الكبيرة
 
     img {
       max-width: 85%;
       max-height: 85%;
       object-fit: contain;
     }
-
-    .wishlist-btn {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: white;
-      border: none;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #333;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      cursor: pointer;
-    }
   }
 
   .product-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    pointer-events: none; // بيخلي الضغطة "تعدي" من النصوص وتروح للكارت الكبيرة
+
     .header-row {
       display: flex;
       justify-content: space-between;
@@ -57,8 +270,6 @@ cursor: pointer;
         font-size: 16px;
         font-weight: 700;
         color: #1a1a1a;
-        text-decoration: none;
-        &:hover { color: #008178; }
       }
 
       .price {
@@ -79,10 +290,11 @@ cursor: pointer;
       display: flex;
       align-items: center;
       gap: 6px;
+      margin-top: auto;
       margin-bottom: 15px;
 
       .stars {
-        color: #00b01e; // اللون الأخضر بتاع النجوم في Shopcart
+        color: #00b01e;
         font-size: 10px;
       }
       .count {
@@ -92,6 +304,7 @@ cursor: pointer;
     }
 
     .add-btn {
+      pointer-events: auto; // لازم نرجع الـ Events هنا عشان الزرار يشتغل!
       width: 100%;
       padding: 10px;
       background: transparent;
@@ -104,7 +317,7 @@ cursor: pointer;
       transition: all 0.2s;
 
       &:hover {
-        background: #003d29; // الأخضر الغامق بتاع Shopcart
+        background: #003d29;
         color: white;
         border-color: #003d29;
       }

@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject, Observable, tap } from "rxjs";
 import { jwtDecode } from "jwt-decode";
 import { environment } from "../../../environment/environment";
-
+import { CartService } from "../cart/cart.service";
 @Injectable({
   providedIn: "root",
 })
@@ -12,7 +12,7 @@ export class AuthService {
   private currentUserSubject = new BehaviorSubject<any>(null);
   public currentUser$ = this.currentUserSubject.asObservable();
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private cartService: CartService) {
     const token = localStorage.getItem("accessToken");
     if (token) this.setUserFromToken(token);
   }
@@ -39,6 +39,11 @@ export class AuthService {
         tap((res) => {
           localStorage.setItem("accessToken", res.accessToken);
           this.setUserFromToken(res.accessToken);
+             // أهم خطوة: تشغيل الدمج فوراً
+          this.cartService.mergeCartAfterLogin().subscribe({
+            next: () => console.log("Cart Merged Successfully"),
+            error: (err:any) => console.error("Merge Error:", err)
+          });
         }),
       );
   }
@@ -62,3 +67,4 @@ export class AuthService {
     return this.currentUserSubject.value?.role === "admin";
   }
 }
+
